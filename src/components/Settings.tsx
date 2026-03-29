@@ -93,7 +93,7 @@ export const Settings: React.FC<SettingsProps> = ({ onClose }) => {
                     </div>
                     <ChevronRight className="w-5 h-5 text-gray-600" />
                   </div>
-                  <div className="p-4 flex items-center justify-between" onClick={() => alert('Checking for updates...')}>
+                  <div className="p-4 flex items-center justify-between" onClick={() => console.log('Checking for updates...')}>
                     <div className="flex items-center gap-4">
                       <Download className="w-5 h-5 text-gold" />
                       <span className="font-medium">Check for Updates</span>
