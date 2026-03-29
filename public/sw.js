@@ -3,8 +3,6 @@ const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/assets/index-CZVZVVhk.css',
-  '/assets/index-CZ_iVIjQ.js',
   'https://picsum.photos/seed/discipline-logo/192/192',
   'https://picsum.photos/seed/discipline-logo/512/512'
 ];
