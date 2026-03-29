@@ -51,7 +51,8 @@ jobs:
       - name: Capacitor Sync
         run: |
           npx cap sync android
-          ls -R android/app/src/main/assets/public || echo "Assets not synced yet"
+          ls -R android/app/src/main/assets/public
+          test -f android/app/src/main/assets/public/index.html || (echo "index.html not found in assets" && exit 1)
 
       - name: Check Android structure
         run: |
