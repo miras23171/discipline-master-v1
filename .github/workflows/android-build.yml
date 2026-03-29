@@ -24,33 +24,34 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '22'
+          cache: 'npm'
 
       - name: Accept Android Licenses
         run: yes | sdkmanager --licenses || true
 
-      - name: Check Environment
-        run: |
-          node -v
-          npm -v
-          java -version
-
       - name: Install dependencies
         run: |
-          npm install --legacy-peer-deps
+          npm ci --legacy-peer-deps
           npm list --depth=0
 
       - name: Lint and Type Check
-        run: npm run lint
+        run: |
+          echo "Running lint..."
+          npm run lint
 
       - name: Build web app
         run: |
+          echo "Building web app..."
           npm run build
+          echo "Checking dist directory..."
           ls -la dist
 
       - name: Capacitor Sync
         run: |
+          echo "Syncing Capacitor..."
           npx cap sync android
+          echo "Checking synced assets..."
           ls -R android/app/src/main/assets/public
           test -f android/app/src/main/assets/public/index.html || (echo "index.html not found in assets" && exit 1)
 
