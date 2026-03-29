@@ -1,0 +1,5 @@
+{
+  "name": "Discipline Master",
+  "description": "A premium discipline tracking app for prayers, reading, exercise, and more.",
+  "requestFramePermissions": ["geolocation"]
+}

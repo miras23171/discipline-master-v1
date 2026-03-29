@@ -1,0 +1,26 @@
+const CACHE_NAME = 'discipline-master-v1';
+const ASSETS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/assets/index-CZVZVVhk.css',
+  '/assets/index-CZ_iVIjQ.js',
+  'https://picsum.photos/seed/discipline-logo/192/192',
+  'https://picsum.photos/seed/discipline-logo/512/512'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS_TO_CACHE);
+    })
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
